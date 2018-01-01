@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Math_Challenge
 {
     class Program
     {
+        //method to create an int list from a string input
         private List<int> MakeList(string myString)
         {
             char[] charArray = myString.ToCharArray();
@@ -16,6 +15,7 @@ namespace Math_Challenge
             intList.AddRange(intArray);
             return intList;
         }
+        //method to validate the string input as a non-negative integer
         private int ValidateInput(string myString)
         {
             int value;
@@ -48,6 +48,7 @@ namespace Math_Challenge
             int myValue1, myValue2;
             char doAgain = 'Y';
 
+            //loop to allow for running the program again
             repeat2 = true;
             while (repeat2)
             {
@@ -56,6 +57,7 @@ namespace Math_Challenge
                 num2 = "";
                 repeat1 = true;
 
+                //loop for validation of the user input
                 while (repeat1)
                 {
                     Console.WriteLine("Please input the first non-negative integer");
@@ -88,12 +90,14 @@ namespace Math_Challenge
                     }
                 }
 
+                //making the user input into an int list
                 List<int> digits1 = new List<int>(n.MakeList(num1));
                 List<int> digits2 = new List<int>(n.MakeList(num2));
 
+                //making a new list that contains the sums of the digits
                 List<int> digits3 = digits1.Zip(digits2, (item1, item2) => item1 + item2).ToList();
 
-
+                //making sure the sums of the digits are the same, giving back true or false to user
                 if (digits3.All(i => i == digits3[0]))
                 {
                     Console.WriteLine(Environment.NewLine);
@@ -105,6 +109,7 @@ namespace Math_Challenge
                     Console.WriteLine("False");
                 }
 
+                //allows user to run the program again
                 Console.WriteLine("Would you like to run this program again? (Y or N)");
                 doAgain = (Convert.ToChar(Console.ReadLine()));
 
